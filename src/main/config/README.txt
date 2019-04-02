@@ -1,4 +1,4 @@
-+--------------------+
+﻿+--------------------+
 | OpenMRS Standalone |
 +--------------------+
 
@@ -17,6 +17,7 @@ CONTENTS
 6.	Changing the password
 7. 	GUI mode options
 8. 	Command line options
+9.	Accessing MySQL database from the command line
 
 BACKGROUND
 ==========
@@ -101,6 +102,20 @@ COMMAND LINE OPTIONS
 -start			Use to start the server.
 -stop			Use to stop the server.
 -browser			Use to launch a new browser instance.
+
+ACCESSSING MYSQL DATABASE FROM THE COMMAND LINE
+===============================================
+
+Windows
+-------
+	
+Option 1: From the command line, navigate to the directory created when expanding the ZIP file. Type "mysql" into the command line and hit enter.
+Option 2: From the file explorer, navigate to the directory created when expanding the ZIP file and double click on mysql.cmd .
+
+Mac or Linux
+------------
+
+From the command line, navigate to the directory created when expanding the ZIP file. Type "./mysql" into the command line and hit enter.
 
 ---------------------------------------------------------------------
 Copyright (C) 2011 OpenMRS LLC. Use of this software is subject to 
