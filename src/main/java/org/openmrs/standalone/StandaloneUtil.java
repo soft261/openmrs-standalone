@@ -173,7 +173,7 @@ public class StandaloneUtil {
 				//This addition to connection string allows mac machines to connect to OpenMRS via the mysql script
 				connectionString = connectionString + "&server.socket=/tmp/openmrs" + newConnectionUrlTag + ".sock";
 				properties.put(KEY_CONNECTION_URL, connectionString);
-				propertiesFileChange = true;
+				propertiesFileChanged = true;
 
 				//Now remove the reset connection url property such that we do not change the password again.
 				properties.remove(KEY_RESET_CONNECTION_URL);
