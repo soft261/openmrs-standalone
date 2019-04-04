@@ -173,8 +173,8 @@ public class StandaloneUtil {
 				}
 
 				//This addition to connection string allows mac machines to connect to OpenMRS via the mysql script
-				String connectionSocket = "&server.socket=/tmp/openmrs" + newConnectionUrlTag + ".sock";
-				connectionString = connectionString + connectionSocket;
+				String connectionSocket = "/tmp/openmrs" + newConnectionUrlTag + ".sock";
+				connectionString = connectionString + "&server.socket=" + connectionSocket;
 				properties.put(KEY_CONNECTION_URL, connectionString);
 				properties.put(KEY_CONNECTION_SOCKET, connectionSocket);
 				propertiesFileChanged = true;
