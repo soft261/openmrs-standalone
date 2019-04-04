@@ -47,6 +47,8 @@ public class StandaloneUtil {
 	public static final String KEY_CONNECTION_USERNAME = "connection.username";
 	public static final String KEY_CONNECTION_PASSWORD = "connection.password";
 	public static final String KEY_CONNECTION_URL = "connection.url";
+	public static final String KEY_CONNECTION_SOCKET = "connection.socket";
+	public static final String KEY_MYSQL_PORT = "mysqlport";
 	public static final String KEY_TOMCAT_PORT = "tomcatport";
 	public static final String KEY_RESET_CONNECTION_PASSWORD = "reset_connection_password";
 	public static final String KEY_RESET_CONNECTION_URL = "reset_connection_url";
@@ -171,8 +173,10 @@ public class StandaloneUtil {
 				}
 
 				//This addition to connection string allows mac machines to connect to OpenMRS via the mysql script
-				connectionString = connectionString + "&server.socket=/tmp/openmrs" + newConnectionUrlTag + ".sock";
+				connectionSocket = "&server.socket=/tmp/openmrs" + newConnectionUrlTag + ".sock";
+				connectionString = connectionString + connectionSocket;
 				properties.put(KEY_CONNECTION_URL, connectionString);
+				properties.put(KEY_CONNECTION_SOCKET, connectionSocket);
 				propertiesFileChanged = true;
 
 				//Now remove the reset connection url property such that we do not change the password again.
@@ -194,7 +198,12 @@ public class StandaloneUtil {
 				if (!connectionString.contains(portToken)) {
 					connectionString = matcher.replaceAll(portToken);
 					properties.put(KEY_CONNECTION_URL, connectionString);
+					propertiesFileChanged = true;
+				}
 
+				//If the MySQL port is not updated within the properties file, update it
+				if (!mySqlPort.equals(properties.get(KEY_MYSQL_PORT))) {
+					properties.put(KEY_MYSQL_PORT, mySqlPort);
 					propertiesFileChanged = true;
 				}
 			} else {
@@ -206,7 +215,9 @@ public class StandaloneUtil {
 				}
 			}
 
+			//Check if we have a port number to add to properties
 			if (tomcatPort != null) {
+				//If the Tomcat port is not updated within the properties file, update it
 				if (!tomcatPort.equals(properties.get(KEY_TOMCAT_PORT))) {
 					properties.put(KEY_TOMCAT_PORT, tomcatPort);
 					propertiesFileChanged = true;
