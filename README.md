@@ -71,29 +71,29 @@ The release/distribution (end user) folder structure should look like this:
 NOTE: Without this folder structure, you will get errors while trying to run the standalone application.
 
 * contextname-runtime.properties
- * e.g openmrs-runtime.properties, openmrs-1.6.1-runtime.properties, openmrs-1.9.0-runtime.properties, etc
- * If you want to use this runtime properties file, make sure that the web application context name does not match with any existing runtime properties file in say the user's home folder. This is because of the openmrs runtime properties file search order which will only look in the current application folder as the last resort if no runtime properties file has been found in any of the other possible locations.
+  * e.g openmrs-runtime.properties, openmrs-1.6.1-runtime.properties, openmrs-1.9.0-runtime.properties, etc
+  * If you want to use this runtime properties file, make sure that the web application context name does not match with any existing runtime properties file in say the user's home folder. This is because of the openmrs runtime properties file search order which will only look in the current application folder as the last resort if no runtime properties file has been found in any of the other possible locations.
 * mysql
- * This is the mysql script that runs on Mac and Linux machines. This script allows a user to access the embedded MySQL server at a command line level.
- * To run this script, navigate to the standalone folder via command line and type `./mysql`.
+  * This is the mysql script that runs on Mac and Linux machines. This script allows a user to access the embedded MySQL server at a command line level.
+  * To run this script, navigate to the standalone folder via command line and type `./mysql`.
 * mysql.cmd
- * This is the mysql script that runs on Windows machine. This script allows a user to access the embedded MySQL server at a command line level. To run this script, navigate to the standalone folder via command line and type `mysql` or double click on the mysql.cmd file.
+  * This is the mysql script that runs on Windows machine. This script allows a user to access the embedded MySQL server at a command line level. To run this script, navigate to the standalone folder via command line and type `mysql` or double click on the mysql.cmd file.
 * standalone-0.0.1-SNAPSHOT.jar
- * This is the output executable jar for this standalone project.
- * You can build this right from eclipse by right clicking on the project and then select Export -> Java -> Runnable JAR file.
- * The name of this jar file needs to be standalone-0.0.1-SNAPSHOT.jar because it is hard coded in the Bootstrap class as so.
+  * This is the output executable jar for this standalone project.
+  * You can build this right from eclipse by right clicking on the project and then select Export -> Java -> Runnable JAR file.
+  * The name of this jar file needs to be standalone-0.0.1-SNAPSHOT.jar because it is hard coded in the Bootstrap class as so.
 * tomcat/conf/web.xml
- * This has the jsp servlet mapping, mime mappings, and other parameters shared by all web applications in this tomcat instance. You can copy this from "tomcat/conf" folder of your tomcat installation.
+  * This has the jsp servlet mapping, mime mappings, and other parameters shared by all web applications in this tomcat instance. You can copy this from "tomcat/conf" folder of your tomcat installation.
 * tomcat/webapps/openmrs.war
- * This is the application war file. You could as well use the expanded folder.
- * The name of this war file, or expanded web app folder is used to determine the context name. Therefore this tomcat/webapps/ folder should not contain any other file or folder apart from the war file or expanded app folder. If you ever want to run multiple versions of openmrs, then make sure that the name of the war file is different for each. e.g openmrs.war, openmrs-1.6.1.war, openmrs-1.7.0.war, etc
+  * This is the application war file. You could as well use the expanded folder.
+  * The name of this war file, or expanded web app folder is used to determine the context name. Therefore this tomcat/webapps/ folder should not contain any other file or folder apart from the war file or expanded app folder. If you ever want to run multiple versions of openmrs, then make sure that the name of the war file is different for each. e.g openmrs.war, openmrs-1.6.1.war, openmrs-1.7.0.war, etc
 * database/data
- * If you do not want the user to be taken through the openmrs web database setup wizard, just copy all the contents of the mysql data folder into this. This folder is the default one but you can change the location using the database connection string.
+  * If you do not want the user to be taken through the openmrs web database setup wizard, just copy all the contents of the mysql data folder into this. This folder is the default one but you can change the location using the database connection string.
 * tomcat/logs
- * This is where the log files are created with names having a convention of day-month-year.log  That means each day has a separate log file.
- * You do not need to create this folder because it can be automatically created by the application. The logs displayed in the textarea of the UI are just a convenient way of showing what is going on without having to first open the  log file. Not to run out of memory, the text area displayed logs are trimmed, starting with the oldest, in order not to exceeed 1,000 characters.
+  * This is where the log files are created with names having a convention of day-month-year.log  That means each day has a separate log file.
+  * You do not need to create this folder because it can be automatically created by the application. The logs displayed in the textarea of the UI are just a convenient way of showing what is going on without having to first open the  log file. Not to run out of memory, the text area displayed logs are trimmed, starting with the oldest, in order not to exceeed 1,000 characters.
 * splashscreen-loading.png
- * This is the splash screen displayed on startup. It can be any .png as long as the name remains the same because it is hardcoded in the application.
+  * This is the splash screen displayed on startup. It can be any .png as long as the name remains the same because it is hardcoded in the application.
 
 ## DATABASE CONNECTION STRING
 
@@ -102,36 +102,36 @@ NOTE: Without this folder structure, you will get errors while trying to run the
 The above default database connection string has all in the openmrs mysql default database connection string plus a
 few additional parameters as explained below:
 
-mxj             
-This is required for the MySQL Connector/MXJ utility which we use for embedding mysql
+* mxj             
+  * This is required for the MySQL Connector/MXJ utility which we use for embedding mysql
 				More information about it can be found at: http://dev.mysql.com/doc/refman/5.1/en/connector-mxj.html
 
-server.initialize-user      
-The value of true tells the database engine to create the user account that will be specified
+* server.initialize-user       
+  * The value of true tells the database engine to create the user account that will be specified
 						    	in the openmrs web database setup. This is the account referred to as
 						    	connection.username & connection.password in the runtime properties file.
 
-createDatabaseIfNotExist    	
-The value of true tells the database engine to create the database if it does not exist.
+* createDatabaseIfNotExist  
+  * The value of true tells the database engine to create the database if it does not exist.
 
-server.basedir 			    	
-This is the directory where the mysql database server will be installed. The default value
+* server.basedir      			    	
+  * This is the directory where the mysql database server will be installed. The default value
 						    	is a database folder in the current directory where the executable jar file is located.
 
-server.datadir    	
-	    	This is the dirrectory where mysql stores the database. The default value is the data folder
+* server.datadir  	
+  * This is the dirrectory where mysql stores the database. The default value is the data folder
 						    	under the database folder in the current directory where the executable jar file is located.
 
-server.collation-server     
-This sets the collation of the database server. If you do not set it to this value, you will
+* server.collation-server       
+  * This sets the collation of the database server. If you do not set it to this value, you will
 						    	get problems running the openmrs liquibase files. This is because the default value is swedish
 						    	collation yet openmrs uses utf8
 
-server.character-set-server 	
-This is the character set used by the database server.
+* server.character-set-server   	
+  * This is the character set used by the database server.
 
-server.socket
-This is the server socket used by the database server on UNIX machines. The asterisks are replaced with a randomly generated 5 digit number on initial startup.
+* server.socket  
+  * This is the server socket used by the database server on UNIX machines. The asterisks are replaced with a randomly generated 5 digit number on initial startup.
 
 
 NOTE: When creating a new database using the openmrs database setup wizard, remember to replace the default connection string
