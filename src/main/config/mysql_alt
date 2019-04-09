@@ -1,1 +1,0 @@
-database/bin/mysql -u openmrs --password="`cat openmrs-standalone-runtime.properties | grep connection.password | awk -F= '{print $2}'`" --socket="`cat openmrs-standalone-runtime.properties | grep connection.socket | awk -F= '{print $2}'`" --max_allowed_packet=96M

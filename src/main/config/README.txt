@@ -116,6 +116,7 @@ Mac or Linux
 ------------
 
 From the command line, navigate to the directory created when expanding the ZIP file. Type "./mysql" into the command line and hit enter.
+NOTE: If you get Permission Denied Error on Linux, right click on the mysql script, click on permissions, and make sure "is executable" is checked.
 
 ---------------------------------------------------------------------
 Copyright (C) 2011 OpenMRS LLC. Use of this software is subject to 
